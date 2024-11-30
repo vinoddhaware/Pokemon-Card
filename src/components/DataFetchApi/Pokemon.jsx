@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const Pokemon = () => {
   const [pokemonData, setPokemonData] = useState(null);
@@ -39,7 +40,7 @@ const Pokemon = () => {
     fetchApi();
   }, []);
 
-  if (loading) return <h1> Loading... </h1>;
+  if (loading) return <h1 className="place-items-center"> <LoadingPage/> </h1>;
   if (error) return <h1> {error.message} </h1>;
   
   const serchPokemon = pokemonData.filter((currPokemon) => currPokemon.name.toLowerCase().includes(search.toLowerCase()))
@@ -47,7 +48,7 @@ const Pokemon = () => {
   return (
     <div>
       <header className="mt-6">
-        <h1 className="text-4xl text-center font-bold"> Lets catch Pikachu </h1>
+        <h1 className="text-5xl text-center font-bold bg-gradient-to-l from-white to-orange-600 text-transparent bg-clip-text"> Lets catch Pokemon </h1>
       </header>
       <div className="serchBar mt-6">
       <div className="bg-white flex px-4 py-3 border-b-4 border-[#333] focus-within:border-yellow-400/90 overflow-hidden max-w-64 mx-auto font-[sans-serif]">
